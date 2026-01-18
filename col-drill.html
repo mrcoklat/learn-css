@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>2-col drill</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      /* ---- global helpers ---- */
+      .col {
+        background: #0ea5e9;
+        color: #fff;
+      }
+      section {
+        margin: 2rem 0;
+      }
+
+      /* ---------- 1. FLOAT ---------- */
+      .float-wrap {
+      }
+      .float-left {
+        width: calc(50% - 10px);
+        float: left;
+      }
+      .float-right {
+        width: calc(50% - 10px);
+        float: right;
+      }
+      .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      /* ---------- 2. FLEXBOX ---------- */
+      .flex-wrap {
+        display: flex;
+        gap: 20px;
+      }
+      .flex-left {
+        flex: 1;
+      }
+      .flex-right {
+        flex: 1;
+      }
+
+      /* ---------- 3. GRID ---------- */
+      .grid-wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      @media (max-width: 600px) {
+        /* gap only works in display flex & grid */
+
+        .float-left,
+        .float-right {
+          width: 100%;
+        }
+        .flex-wrap {
+          display: block;
+        }
+        .grid-wrap {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
+        /* Float never had a real gap, 
+        flex removes its gap when you switch to display: block, 
+        but grid keeps its gap since it’s still a grid. */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 1) FLOAT VERSION -->
+    <section class="float-wrap clearfix">
+      <div class="col float-left">Left content</div>
+      <div class="col float-right">Right content</div>
+    </section>
+
+    <!-- 2) FLEX VERSION -->
+    <section class="flex-wrap">
+      <div class="col flex-left">Left content</div>
+      <div class="col flex-right">Right content</div>
+    </section>
+
+    <!-- 3) GRID VERSION -->
+    <section class="grid-wrap">
+      <div class="col">Left content</div>
+      <div class="col">Right content</div>
+    </section>
+  </body>
+</html>

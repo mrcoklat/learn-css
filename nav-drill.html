@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>CSS-only responsive nav</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      /* ---------- your CSS here ---------- */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      .navbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 1rem;
+      }
+      .logo {
+        margin-right: auto;
+      }
+      .toggle {
+        display: none;
+      }
+      .hamburger {
+        display: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+      }
+      .hamburger::before {
+        content: "☰";
+        display: inline-block;
+        transition: transform 0.3s;
+      }
+      .menu {
+        display: flex;
+        gap: 1rem;
+      }
+      .menu a {
+        color: black;
+        text-decoration: none;
+      }
+
+      @media (max-width: 600px) {
+        .hamburger {
+          display: block;
+        }
+        .menu {
+          width: 100%;
+          max-height: 0;
+          overflow: hidden;
+          flex-direction: column;
+          transition: max-height 0.3s;
+        }
+        .toggle:checked ~ .menu {
+          max-height: 200px;
+        }
+        .toggle:checked ~ .hamburger::before {
+          content: "x";
+          transform: rotate(90deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="navbar">
+      <h1 class="logo">Logo</h1>
+      <input type="checkbox" id="nav-toggle" class="toggle" />
+      <label for="nav-toggle" class="hamburger"></label>
+
+      <nav class="menu">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+
+    <!-- dummy content to prove page doesn't jump -->
+    <main style="padding: 1rem"><p>Scrollable content here…</p></main>
+  </body>
+</html>

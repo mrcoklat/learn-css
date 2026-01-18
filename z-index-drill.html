@@ -1,0 +1,57 @@
+<!doctype html>
+<title>Overlap & z-index drill</title>
+<style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+  }
+  .wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .sq {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    transition: transform 0.2s;
+  }
+  .green {
+    background: #22c55e;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    transform: translate(-70%, -70%);
+  }
+  .orange {
+    background: #fb923c;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+  }
+  .purple {
+    background: #a855f7;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform: translate(-30%, -30%);
+  }
+  .green:hover {
+    transform: translate(-60%, -60%);
+  }
+  .orange:hover {
+    transform: translate(-40%, -40%);
+  }
+  .purple:hover {
+    transform: translate(-20%, -20%);
+  }
+  /* your offsets and z-index here */
+</style>
+
+<div class="wrap">
+  <div class="sq green"></div>
+  <div class="sq orange"></div>
+  <div class="sq purple"></div>
+</div>
